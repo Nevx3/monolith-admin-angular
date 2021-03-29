@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { PublicComponent } from './public.component';
 import { RegisterComponent } from './register/register.component';
 import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -12,6 +13,8 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
   ]
 })
 export class PublicModule { }
