@@ -39,4 +39,18 @@ export class AuthService {
     });
   }
 
+  /**
+   * 
+   * @returns 
+   */
+  logoutUser() {
+     const headers = new HttpHeaders({
+      Authorization: `Bearer ${localStorage.getItem('token')}`
+    });
+
+    return this.http.post(`${environment.apiUrl}/logout`, {'token': localStorage.getItem('token')} ,{
+      headers: headers
+    });
+  }
+
 }

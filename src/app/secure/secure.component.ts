@@ -10,7 +10,7 @@ import { User } from '../interfaces/user';
   styleUrls: ['./secure.component.scss']
 })
 export class SecureComponent implements OnInit {
-  user: User;
+  userr: User;
 
   constructor(private authService:AuthService, private router: Router) { }
 
@@ -21,7 +21,7 @@ export class SecureComponent implements OnInit {
 
   public loggedUser() {
     this.authService.loggedUser().subscribe((res: any) => {
-      this.user = res.data;
+      this.userr = res.data;
     },
       err => {
         this.router.navigate(['/login']);
