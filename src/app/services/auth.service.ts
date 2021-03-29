@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -17,6 +17,26 @@ export class AuthService {
   login(data) {
     console.log(environment.apiUrl)
     return this.http.post(`${environment.apiUrl}/login`, data)
+  }
+
+  users() {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${localStorage.getItem('token')}`
+    });
+
+    return this.http.get(`${environment.apiUrl}/users`, {
+      headers: headers
+    });
+  }
+
+  loggedUser() {
+     const headers = new HttpHeaders({
+      Authorization: `Bearer ${localStorage.getItem('token')}`
+    });
+
+    return this.http.get(`${environment.apiUrl}/me`, {
+      headers: headers
+    });
   }
 
 }

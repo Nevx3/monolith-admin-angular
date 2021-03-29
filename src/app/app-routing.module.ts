@@ -8,7 +8,29 @@ import { SecureComponent } from './secure/secure.component';
 import { UsersComponent } from './secure/users/users.component';
 
 const routes: Routes = [
-  { 
+   { 
+    path: '', 
+    component: SecureComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: '/dashboard',
+        pathMatch: 'full'
+      },
+      {
+        path: 'dashboard',
+        component: DashboardComponent
+
+      },
+      {
+        path: 'users',
+        component: UsersComponent
+
+      }
+    ]
+  },
+
+ { 
     path: '', 
     component: PublicComponent,
     children: [
@@ -20,23 +42,6 @@ const routes: Routes = [
         path: 'register', 
         component: RegisterComponent
       },
-    ]
-  },
-
-  { 
-    path: '', 
-    component: SecureComponent,
-    children: [
-      {
-        path: 'dashboard',
-        component: DashboardComponent
-
-      },
-      {
-        path: 'users',
-        component: UsersComponent
-
-      }
     ]
   },
 

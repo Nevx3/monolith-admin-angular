@@ -25,8 +25,8 @@ export class LoginComponent implements OnInit {
    */
   submit() {
     const data = this.form.getRawValue();
-    this.authService.login(data).subscribe((res) => {
-      console.log(res)
+    this.authService.login(data).subscribe((res: any) => {
+      localStorage.setItem('token', res.access_token )
     });
   }
 
