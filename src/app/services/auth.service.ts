@@ -20,23 +20,11 @@ export class AuthService {
   }
 
   users() {
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${localStorage.getItem('token')}`
-    });
-
-    return this.http.get(`${environment.apiUrl}/users`, {
-      headers: headers
-    });
+    return this.http.get(`${environment.apiUrl}/users`);
   }
 
   loggedUser() {
-     const headers = new HttpHeaders({
-      Authorization: `Bearer ${localStorage.getItem('token')}`
-    });
-
-    return this.http.get(`${environment.apiUrl}/me`, {
-      headers: headers
-    });
+    return this.http.get(`${environment.apiUrl}/me`);
   }
 
   /**
@@ -44,13 +32,7 @@ export class AuthService {
    * @returns 
    */
   logoutUser() {
-     const headers = new HttpHeaders({
-      Authorization: `Bearer ${localStorage.getItem('token')}`
-    });
-
-    return this.http.post(`${environment.apiUrl}/logout`, {'token': localStorage.getItem('token')} ,{
-      headers: headers
-    });
+    return this.http.post(`${environment.apiUrl}/logout`, {'token': localStorage.getItem('token')});
   }
 
 }
