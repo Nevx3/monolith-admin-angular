@@ -1,6 +1,13 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-          <h1 class="h2">Dashboard</h1>
+          <h1 class="h2">Posts</h1>
           <div class="btn-toolbar mb-2 mb-md-0">
+            <div class="btn-group">
+              <button class="mr-2 btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Categories
+              </button>
+              <div class="dropdown-menu">
+              </div>
+            </div>
             <div class="btn-group mr-2">
               <button class="btn btn-sm btn-outline-secondary">Share</button>
               <button class="btn btn-sm btn-outline-secondary">Export</button>
@@ -11,4 +18,25 @@
             </button>
           </div>
         </div>
- 
+        <div class="album py-5 bg-light" style="background-color: teal !important;">
+          <div class="container">
+            <div class="row">
+              <div *ngFor="let post of posts | async; index as i" class="col-md-4">
+                <div style="min-height: 400px;" class="card mb-4 box-shadow">
+                  <!-- <img class="card-img-top" src="{{ post.featured_image_url }}" alt="Card image cap"> -->
+                  <div class="card-body">
+                    <h4 style="color:green"> {{post.title}} </h4>
+                    <p class="card-text">{{ post.body }}</p>
+                  </div>
+                  <div class="card-footer text-muted">
+                    <div class="btn-group mr-4">
+                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                    </div>
+                    <small class="float-right ml-4 text-muted">By: {{ post.user.name }} <br> {{ post.published_at }} </small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
