@@ -12,31 +12,62 @@ import { Observable, of } from 'rxjs';
 export class DashboardComponent implements OnInit {
 
   public posts: Observable<Post[]>;
+  private currentPage = 1;
+  private lastPage: number;
 
   constructor(private categoryService: CategoryService, private postsService: PostsService) { }
 
   ngOnInit(): void {
-    // this.getCatrgories();
-    this.getPosts();
+    this.refresh();
   }
 
   /**
    *
    * @returns
    */
-  public getCatrgories() {
+  public getCategories() {
     return this.categoryService.getCategories().subscribe((response: any) => {
-
       console.log(response.data);
     });
   }
 
-  public getPosts() {
-    this.postsService.getPosts().subscribe((response: any) => {
+  /**
+   * Get Posts list
+   * @param page
+   */
+  public getPosts(page) {
+    this.postsService.getPosts(page).subscribe((response: any) => {
       this.posts =  of(response.data.data);
+      this.lastPage = response.data.last_page;
       return of(this.posts);
-      // console.log(this.posts)
     })
+  }
+
+  /**
+   * Refresh the list of posts after paginate.
+   */
+  refresh() {
+    this.getPosts(this.currentPage);
+  }
+
+  /**
+   * Move to previous page.
+   * @returns
+   */
+  prev() {
+    if(this.currentPage === 1) return;
+    this.currentPage--;
+    this.refresh();
+  }
+
+  /**
+   * Move to next page.
+   * @returns
+   */
+  next() {
+    if(this.currentPage === this.lastPage) return;
+    this.currentPage++;
+    this.refresh();
   }
 
 }

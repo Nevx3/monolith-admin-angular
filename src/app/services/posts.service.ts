@@ -9,8 +9,12 @@ export class PostsService {
 
   constructor(private http: HttpClient) { }
 
-
-  public getPosts() {
-    return this.http.get(`${environment.apiUrl}/explore`);
+/**
+ * Get posts for the given page number.
+ * @param page
+ * @returns
+ */
+  public getPosts(page: number) {
+    return this.http.get(`${environment.apiUrl}/explore?page=${page}`);
   }
 }

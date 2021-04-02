@@ -10,12 +10,11 @@ export class AuthService {
   constructor(private http: HttpClient ) { }
 
   /**
-   * 
-   * @param data 
-   * @returns 
+   *
+   * @param data
+   * @returns
    */
   login(data) {
-    console.log(environment.apiUrl)
     return this.http.post(`${environment.apiUrl}/login`, data)
   }
 
@@ -28,8 +27,8 @@ export class AuthService {
   }
 
   /**
-   * 
-   * @returns 
+   *
+   * @returns
    */
   logoutUser() {
     return this.http.post(`${environment.apiUrl}/logout`, {'token': localStorage.getItem('token')});
