@@ -13,14 +13,14 @@ import { Auth } from '../classes/auth';
 export class SecureComponent implements OnInit {
   userr: User;
 
-  constructor(private authService:AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.loggedUser();
   }
-  
 
-  public loggedUser() {
+
+  public loggedUser(): void {
     this.authService.loggedUser().subscribe((res: any) => {
       this.userr = res.data;
       Auth.user = this.userr;   // Auth is a class inside classes/auth.ts

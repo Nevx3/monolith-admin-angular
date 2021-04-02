@@ -35,18 +35,18 @@ export class DashboardComponent implements OnInit {
    * Get Posts list
    * @param page
    */
-  public getPosts(page) {
+  public getPosts(page): void {
     this.postsService.getPosts(page).subscribe((response: any) => {
       this.posts =  of(response.data.data);
       this.lastPage = response.data.last_page;
       return of(this.posts);
-    })
+    });
   }
 
   /**
    * Refresh the list of posts after paginate.
    */
-  refresh() {
+  refresh(): void {
     this.getPosts(this.currentPage);
   }
 
@@ -54,8 +54,8 @@ export class DashboardComponent implements OnInit {
    * Move to previous page.
    * @returns
    */
-  prev() {
-    if(this.currentPage === 1) return;
+  public prev(): void {
+    if (this.currentPage === 1) { return; }
     this.currentPage--;
     this.refresh();
   }
@@ -64,8 +64,8 @@ export class DashboardComponent implements OnInit {
    * Move to next page.
    * @returns
    */
-  next() {
-    if(this.currentPage === this.lastPage) return;
+  public next(): void {
+    if (this.currentPage === this.lastPage) { return; }
     this.currentPage++;
     this.refresh();
   }

@@ -8,8 +8,8 @@ import { SecureComponent } from './secure/secure.component';
 import { UsersComponent } from './secure/users/users.component';
 
 const routes: Routes = [
-   { 
-    path: '', 
+   {
+    path: '',
     component: SecureComponent,
     children: [
       {
@@ -30,16 +30,16 @@ const routes: Routes = [
     ]
   },
 
- { 
-    path: '', 
+ {
+    path: '',
     component: PublicComponent,
     children: [
-      { 
-        path: 'login', 
+      {
+        path: 'login',
         component: LoginComponent
       },
-      { 
-        path: 'register', 
+      {
+        path: 'register',
         component: RegisterComponent
       },
     ]
