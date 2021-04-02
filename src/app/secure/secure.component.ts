@@ -28,7 +28,7 @@ export class SecureComponent implements OnInit {
       err => {
         this.router.navigate(['/login']);
       }
-    )
+    );
   }
 
 

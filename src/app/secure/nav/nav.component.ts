@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./nav.component.scss']
 })
 export class NavComponent implements OnInit {
-  user: User = null
+  user: User = null;
   // @Input('user') user: User = null;
 
 
@@ -22,11 +22,11 @@ export class NavComponent implements OnInit {
     });
   }
 
-  logout() {
+  logout(): void {
     this.authService.logoutUser().subscribe((res) => {
       localStorage.removeItem('token');
       this.router.navigate(['/login']);
-      console.log('Logout Successfully')
-    })
+      console.log('Logout Successfully');
+    });
   }
 }

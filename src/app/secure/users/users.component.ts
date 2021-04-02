@@ -22,6 +22,6 @@ export class UsersComponent implements OnInit {
       err => {
         this.router.navigate(['/login']);
       }
-    )
+    );
   }
 }
