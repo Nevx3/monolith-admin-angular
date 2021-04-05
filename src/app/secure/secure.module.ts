@@ -6,7 +6,7 @@ import { MenuComponent } from './menu/menu.component';
 import { UsersComponent } from './users/users.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { Router, RouterModule } from '@angular/router';
-
+import { PostComponent } from './post/post.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +15,7 @@ import { Router, RouterModule } from '@angular/router';
     MenuComponent,
     UsersComponent,
     DashboardComponent,
+    PostComponent,
   ],
   imports: [
     CommonModule,

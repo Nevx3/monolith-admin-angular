@@ -15,7 +15,7 @@ export class AuthService {
    * @returns
    */
   login(data) {
-    return this.http.post(`${environment.apiUrl}/login`, data)
+    return this.http.post(`${environment.apiUrl}/login`, data);
   }
 
   users() {
