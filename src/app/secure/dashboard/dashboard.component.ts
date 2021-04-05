@@ -70,4 +70,17 @@ export class DashboardComponent implements OnInit {
     this.refresh();
   }
 
+  /**
+   * Delete Post
+   * @param id
+   */
+  public deletePost(id: number) {
+    if (confirm('Are you sure you want to delete this post?')){
+      this.postsService.deletePost(id)
+      .subscribe((res) => {
+        this.refresh();
+      });
+    }
+  }
+
 }

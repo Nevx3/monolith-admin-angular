@@ -7,8 +7,10 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class PostsService {
-
-  constructor(private http: HttpClient) { }
+  url: string;
+  constructor(private http: HttpClient) {
+    this.url = `${environment.apiUrl}/posts`;
+   }
 
 /**
  * Get posts for the given page number.
@@ -16,6 +18,10 @@ export class PostsService {
  * @returns
  */
   public getPosts(page: number): Observable<object> {
-    return this.http.get(`${environment.apiUrl}/posts?page=${page}`);
+    return this.http.get(`${this.url}?page=${page}`);
+  }
+
+  public deletePost(postId: number) {
+    return this.http.delete(`${this.url}/${postId}`);
   }
 }
