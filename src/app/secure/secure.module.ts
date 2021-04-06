@@ -7,6 +7,7 @@ import { UsersComponent } from './users/users.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { Router, RouterModule } from '@angular/router';
 import { PostComponent } from './post/post.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { PostComponent } from './post/post.component';
   imports: [
     CommonModule,
     RouterModule,
+    ReactiveFormsModule,
   ],
   exports: [
     SecureComponent,

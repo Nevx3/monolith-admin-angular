@@ -1,1 +1,55 @@
-<p>users works!</p>
+<div class="pos">
+  <div class="collapse" id="navbarToggleExternalContent">
+    <div class="bg-dark p-4">
+      <h5 class="text-white h4 ml-4">ADD NEW USER</h5>
+       <div class="col-sm-12 col-md-12 text-center">
+      <form class="form-inline" [formGroup]="form" (submit)="addNewUser()" >
+        <div class="input-group ml-2 mr-sm-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text">Name</div>
+          </div>
+          <input type="text" formControlName="name" class="form-control" id="name" placeholder="Enter Name">
+        </div>
+        <div class="input-group ml-2 mr-sm-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text">Email</div>
+          </div>
+          <input type="email" formControlName="email" class="form-control" id="email" placeholder="Enter Email">
+        </div>
+        <div class="input-group ml-2 mr-sm-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text">Password</div>
+          </div>
+          <input type="password" formControlName="password" class="form-control" id="password" placeholder="Enter Password">
+        </div>
+        <button type="submit" class="btn btn-success ml-2">Add</button>
+      </form>
+      </div>
+    </div>
+  </div>
+  <nav class="navbar navbar-dark bg-dark">
+    <button class="btn btn-sm btn-success" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="primary"> Add New User</span>
+    </button>
+  </nav>
+</div>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users | async; index as i">
+      <th scope="row">{{user.id}}</th>
+      <td>{{user.name}}</td>
+      <td>{{user.email}}</td>
+      <td><button class="btn btn-sm btn-danger" (click)="deleteUser(user.id)">Delete</button></td>
+    </tr>
+  </tbody>
+</table>
+
+
