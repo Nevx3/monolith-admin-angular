@@ -29,15 +29,15 @@ export class UsersComponent implements OnInit {
    * get all the users
    */
   public getUsers() {
-    this.userService.all().subscribe((response: any) => {
-      console.log(response);
-      this.users =  of(response);
-      return of(this.users);
-    },
-      err => {
-        this.router.navigate(['/login']);
-      }
-    );
+    this.userService.all()
+    .subscribe({
+      next: (response: any) => { this.users =  of(response); },
+      error: (err) => {
+         console.error('Error occured: ' + err);
+         this.router.navigate(['/login']);
+        },
+      complete: () => this.users,
+    });
   }
 
   /**

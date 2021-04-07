@@ -22,11 +22,19 @@ export class NavComponent implements OnInit {
     });
   }
 
+
+  /**
+   * // complete: () => { ... }, // completeHandler
+   * // error: () => { ... },    // errorHandler
+   */
   logout(): void {
-    this.authService.logoutUser().subscribe((res) => {
-      localStorage.removeItem('token');
-      this.router.navigate(['/login']);
-      console.log('Logout Successfully');
+    this.authService.logoutUser()
+    .subscribe({
+      next: () => { localStorage.removeItem('token'); },     // nextHandler
+      complete: () => {
+        this.router.navigate(['/login']);
+        console.log('Logout Successfully');
+      },
     });
   }
 }
